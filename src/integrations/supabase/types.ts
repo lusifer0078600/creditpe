@@ -14,7 +14,169 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      applications: {
+        Row: {
+          aadhaar_number: string | null
+          address_line1: string | null
+          address_line2: string | null
+          application_status: string | null
+          city: string | null
+          created_at: string
+          credit_limit: number | null
+          employment_type: string | null
+          id: string
+          monthly_income: number | null
+          pan_number: string | null
+          pincode: string | null
+          state: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          aadhaar_number?: string | null
+          address_line1?: string | null
+          address_line2?: string | null
+          application_status?: string | null
+          city?: string | null
+          created_at?: string
+          credit_limit?: number | null
+          employment_type?: string | null
+          id?: string
+          monthly_income?: number | null
+          pan_number?: string | null
+          pincode?: string | null
+          state?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          aadhaar_number?: string | null
+          address_line1?: string | null
+          address_line2?: string | null
+          application_status?: string | null
+          city?: string | null
+          created_at?: string
+          credit_limit?: number | null
+          employment_type?: string | null
+          id?: string
+          monthly_income?: number | null
+          pan_number?: string | null
+          pincode?: string | null
+          state?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      documents: {
+        Row: {
+          application_id: string | null
+          created_at: string
+          document_type: string | null
+          file_path: string | null
+          id: string
+          verified: boolean | null
+        }
+        Insert: {
+          application_id?: string | null
+          created_at?: string
+          document_type?: string | null
+          file_path?: string | null
+          id?: string
+          verified?: boolean | null
+        }
+        Update: {
+          application_id?: string | null
+          created_at?: string
+          document_type?: string | null
+          file_path?: string | null
+          id?: string
+          verified?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "documents_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      payments: {
+        Row: {
+          amount: number
+          application_id: string | null
+          created_at: string
+          id: string
+          payment_method: string | null
+          payment_status: string | null
+          transaction_id: string | null
+        }
+        Insert: {
+          amount?: number
+          application_id?: string | null
+          created_at?: string
+          id?: string
+          payment_method?: string | null
+          payment_status?: string | null
+          transaction_id?: string | null
+        }
+        Update: {
+          amount?: number
+          application_id?: string | null
+          created_at?: string
+          id?: string
+          payment_method?: string | null
+          payment_status?: string | null
+          transaction_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          date_of_birth: string | null
+          email: string | null
+          full_name: string | null
+          gender: string | null
+          id: string
+          phone: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string | null
+          full_name?: string | null
+          gender?: string | null
+          id?: string
+          phone: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          date_of_birth?: string | null
+          email?: string | null
+          full_name?: string | null
+          gender?: string | null
+          id?: string
+          phone?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
